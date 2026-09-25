@@ -1,4 +1,4 @@
-# 🏭 JDBC Фирма-сборщик
+# JDBC Фирма-сборщик
 
 Консольное приложение на **Java 21 + JDBC + PostgreSQL** для учёта фирмы, которая собирает электронные изделия: поставщики, компоненты на складе, изделия и их состав, клиенты, торговые агенты и заказы.
 
@@ -6,12 +6,11 @@
 
 ![Java](https://img.shields.io/badge/Java-21-orange?logo=openjdk)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13+-336791?logo=postgresql&logoColor=white)
-![Maven](https://img.shields.io/badge/Maven-build-C71A36?logo=apachemaven)
 ![HikariCP](https://img.shields.io/badge/HikariCP-connection%20pool-blue)
 
 ---
 
-## 📸 Как это выглядит
+## Как это выглядит
 
 **Бизнес-запросы:** дефицит компонентов на складе и сумма закупок по поставщикам
 
@@ -27,7 +26,7 @@
 
 ---
 
-## ✨ Возможности
+## Возможности
 
 | Раздел | Что умеет |
 |---|---|
@@ -39,7 +38,7 @@
 | **SQL-консоль** | Выполняет произвольный SQL и печатает результат таблицей с автоматической шириной колонок |
 | **Сброс БД** | Пересоздаёт схему и заново заполняет её тестовыми данными |
 
-## 🧱 Архитектура
+## Архитектура
 
 ```
 src/main/java/com/firma
@@ -59,27 +58,24 @@ src/main/resources
 └── logback.xml                # логирование
 ```
 
-## 🗄️ Схема базы данных
+## Схема базы данных
 
 ![Схема базы данных](screenshots/database.png)
 
 Целостность данных обеспечивают `CHECK` (остаток ≥ 0, объём поставки > 0), `UNIQUE (name, manufacturer)` и продуманные правила удаления: `RESTRICT`, `CASCADE` и `SET NULL`. Под обязательные запросы созданы отдельные индексы.
 
-## 🚀 Запуск
+## Запуск
 
-**Нужно:** JDK 21+, Maven, PostgreSQL.
+**Нужно:** JDK 21+, PostgreSQL.
 
 1. Создай базу данных:
    ```sql
    CREATE DATABASE "Firma_6var";
    ```
 2. При необходимости поменяй логин и пароль в `src/main/resources/application.properties`.
-3. Собери и запусти проект:
-   ```bash
-   mvn compile exec:java
-   ```
+3. Собери и запусти проект.
    Схема и тестовые данные создадутся автоматически при старте.
 
 ## 🛠️ Стек
 
-Java 21 · JDBC · PostgreSQL · HikariCP · SLF4J + Logback · Maven
+Java 21 · JDBC · PostgreSQL · HikariCP
