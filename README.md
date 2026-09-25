@@ -61,19 +61,7 @@ src/main/resources
 
 ## 🗄️ Схема базы данных
 
-```mermaid
-erDiagram
-    SUPPLIERS ||--o{ SUPPLIES : "поставляет"
-    COMPONENTS ||--o{ SUPPLIES : "поставляется"
-    PRODUCTS ||--o{ PRODUCT_COMPONENTS : "состоит из"
-    COMPONENTS ||--o{ PRODUCT_COMPONENTS : "входит в"
-    CUSTOMERS ||--o{ ORDERS : "оформляет"
-    SALES_AGENTS ||--o{ ORDERS : "ведёт"
-    ORDERS ||--o{ ORDER_PRODUCTS : "содержит"
-    PRODUCTS ||--o{ ORDER_PRODUCTS : ""
-    ORDERS ||--o{ ORDER_COMPONENTS : "содержит"
-    COMPONENTS ||--o{ ORDER_COMPONENTS : ""
-```
+![Схема базы данных](screenshots/database.png)
 
 Целостность данных обеспечивают `CHECK` (остаток ≥ 0, объём поставки > 0), `UNIQUE (name, manufacturer)` и продуманные правила удаления: `RESTRICT`, `CASCADE` и `SET NULL`. Под обязательные запросы созданы отдельные индексы.
 
